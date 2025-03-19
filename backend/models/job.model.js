@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { number } from "zod";
+
 const jobSchema = new mongoose.Schema({
     title:{
         type:String,
@@ -9,18 +9,22 @@ const jobSchema = new mongoose.Schema({
         type:String,
         required: true
     },
-    requirement:[{
+    requirements:[{
         type:String
     }],
     salary:{
-        type: number,
+        type: Number,
         required: true
+    },
+    experienceLevel:{
+        type:Number,
+        required:true
     },
     location:{
         type:String,
         required: true
     },
-    jobtype:{
+    jobType:{
          type: String,
          required: true
     },
@@ -33,12 +37,12 @@ const jobSchema = new mongoose.Schema({
         ref:'Company',
         required: true
     },
-    company:{
+    created_by:{
         type: mongoose.Schema.Types.ObjectId,
         ref:'User',
         required: true
     },
-    application:[{
+    applications:[{
         type: mongoose.Schema.Types.ObjectId,
         ref:'Application',
     }]
